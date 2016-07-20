@@ -65,9 +65,9 @@ include('panelheader.php');
 								<form action="?action=<?php echo $per->intidpersona > 0 ? 'actualizar' : 'registrar'; ?>" method="post" class="pure-form pure-form-stacked" style="margin-bottom:30px;" enctype="multipart/form-data">
 				                    <input class="form-control" type="hidden" name="intidpersona" value="<?php echo $per->__GET('intidpersona'); ?>" />
 				                    <label for="">Nombre</label>
-				                    <input class="form-control" type="text" name="nvchnombres" value="<?php echo $per->__GET('nvchnombres'); ?>" style="width:100%;" required />
+				                    <input style='text-transform: uppercase;' class="form-control" type="text" name="nvchnombres" value="<?php echo $per->__GET('nvchnombres'); ?>" style="width:100%;" required />
 				                    <label for="">Apellido</label>
-				                    <input class="form-control" type="text" name="nvchapellido" value="<?php echo $per->__GET('nvchapellido'); ?>" style="width:100%;" required/>
+				                    <input style='text-transform: uppercase;' class="form-control" type="text" name="nvchapellido" value="<?php echo $per->__GET('nvchapellido'); ?>" style="width:100%;" required/>
 				                    <label for="">Direccion</label>
 				                    <input class="form-control" type="text" name="nvchdireccion" value="<?php echo $per->__GET('nvchdireccion'); ?>" style="width:100%;" required/>
 				                    <label for="">Correo</label>

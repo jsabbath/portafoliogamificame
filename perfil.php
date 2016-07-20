@@ -9,7 +9,7 @@
   $name = 'db_portfoliogame';
   conectar($servidor, $user, $pass, $name);
 
-      function dameparticipantes(){
+    function dameparticipantes(){
       	$iduser = $_SESSION["usuarioid"] = $_POST['codigo'];
 
           $consulta_mysql="
@@ -20,7 +20,7 @@
           $resultado_consulta_mysql=mysql_query($consulta_mysql);
           while($registro = mysql_fetch_array($resultado_consulta_mysql)){
               echo "
-		          <div class='col-sm-4'>
+		          <div class='col-sm-5'>
 		            <div class='team-member wow flipInY' data-wow-duration='1000ms' data-wow-delay='300ms'>
 		              <div class='member-image'>
 		                <img style='width:200px; margin: 0 auto' class='img-responsive' src='images/team/1.jpg' alt=''>
@@ -28,12 +28,16 @@
 		              <div class='member-info'>
 		                <h3 style='text-transform:uppercase'>".$registro['nvchnombres']."</h3>
 		                <h4 style='text-transform:uppercase; '>".$registro['nvchapellido']."</h4>
-		                <p style=''>CEO, cargo skills</p>
+		                <p>	
+		                	<label for=''>Dirección: ".$registro['nvchdireccion']."</label><br>
+		                	<label for=''>e-mail: ".$registro['nvchcorreo']."</label><br>
+		                	<label for=''>Cel: ".$registro['nvchphone']."</label>
+		                </p>
 		              </div>
 		              <div class='social-icons'>
 		                <ul>
-		                  <li><a class='facebook' href='#'><i class='fa fa-facebook'></i></a></li>
-		                  <li><a class='twitter' href='#'><i class='fa fa-twitter'></i></a></li>
+		                  <li><a class='facebook' href='".$registro['nvchfcbk']."'><i class='fa fa-facebook'></i></a></li>
+		                  <li><a class='twitter' href='".$registro['nvchtwttr']."'><i class='fa fa-twitter'></i></a></li>
 		                  <!--li><a class='googleplus' href='#'><i class='fa fa-googleplus'></i></a></li-->
 		                  <!--li><a class='dribbble' href='#''><i class='fa fa-dribbble'></i></a></li>
 		                  <li><a class='rss' href='#'><i class='fa fa-rss'></i></a></li-->
@@ -42,6 +46,33 @@
 		            </div>
 		          </div>
 		              ";
+        }
+    }
+
+    function dameskills(){
+      	$iduser = $_SESSION["usuarioid"] = $_POST['codigo'];
+          $consulta_mysql="
+			SELECT
+			  *
+			FROM
+			  tb_skillme
+			 where 
+			 intidpersona = '$iduser';
+          ";
+          $resultado_consulta_mysql=mysql_query($consulta_mysql);
+          while($registro = mysql_fetch_array($resultado_consulta_mysql)){
+              echo "
+	            <div class='single-skill wow fadeInDown' data-wow-duration='1000ms' data-wow-delay='300ms'>
+	              <p class='lead'>
+					".$registro['nvchskillname']."
+	              </p>
+	              <div class='progress'>
+	                <div class='progress-bar progress-bar-primary six-sec-ease-in-out' role='progressbar'  aria-valuetransitiongoal='".$registro['nvchporcentaje']."'>
+	                ".$registro['nvchporcentaje']."%
+	                </div>
+	              </div>
+	            </div>
+	              ";
         }
     }
 
@@ -106,45 +137,21 @@
     </div><!--/#main-nav-->
   </header><!--/#home-->
 
-  <section  id="mesklls" >
+  <section  id="mesklls"  style="margin-top: -50px">
   <br><br><br><br>
     <div class="container">
       <div class="team-members">
         <div class="row">
           <?php dameparticipantes(); ?>
-	      <div class="col-sm-6">
+	      <div class="col-sm-7">
 	          <div class="our-skills wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
-	            <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
-	              <p class="lead">User Experiances</p>
-	              <div class="progress">
-	                <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar"  aria-valuetransitiongoal="95">95%</div>
-	              </div>
-	            </div>
-	            <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="400ms">
-	              <p class="lead">Web Design</p>
-	              <div class="progress">
-	                <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar"  aria-valuetransitiongoal="75">75%</div>
-	              </div>
-	            </div>
-	            <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
-	              <p class="lead">Programming</p>
-	              <div class="progress">
-	                <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar"  aria-valuetransitiongoal="60">60%</div>
-	              </div>
-	            </div>
-	            <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-	              <p class="lead">Fun</p>
-	              <div class="progress">
-	                <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar"  aria-valuetransitiongoal="85">85%</div>
-	              </div>
-	            </div>
+	          	<?php dameskills(); ?>
 	          </div>
 	      </div>
         </div>
       </div>            
     </div>
   </section><!--/#team-->
-
 
   <section id="blog">
     <div class="container">
@@ -342,3 +349,4 @@
 
 </body>
 </html>
+

@@ -53,9 +53,18 @@
 			<!--li><a href="index.html"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
 			<li><a href="widgets.html"><span class="glyphicon glyphicon-th"></span> Widgets</a></li-->
 			<!--li><a href="charts.html"><span class="glyphicon glyphicon-stats"></span> Charts</a></li-->
-			<li class=""><a href="adminpersona.php"><span class="glyphicon glyphicon-list-alt"></span> CRUD Personas</a></li>
-			<li class=""><a href="admingame.php"><span class="glyphicon glyphicon-list-alt"></span> CRUD Game</a></li>
-			<li><a href="adminjuegopersona.php"><span class="glyphicon glyphicon-pencil"></span> SKILLS Person</a></li>
+			<li class="">
+				<a href="adminpersona.php"><span class="glyphicon glyphicon-list-alt"></span> CRUD Personas</a>
+			</li>
+			<li class="">
+				<a href="admingame.php"><span class="glyphicon glyphicon-list-alt"></span> CRUD Game</a>
+			</li>
+			<li>
+				<a href="adminjuegopersona.php"><span class="glyphicon glyphicon-pencil"></span> Skill persona/juego</a>
+			</li>
+			<li>
+				<a href="adminskillperson.php"><span class="glyphicon glyphicon-pencil"></span> SKILLS Individual</a>
+			</li>
 			<!--li><a href="panels.html"><span class="glyphicon glyphicon-info-sign"></span> Alerts &amp; Panels</a></li-->
 			<!--li class="parent ">
 				<a href="#">
