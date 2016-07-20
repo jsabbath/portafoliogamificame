@@ -1,4 +1,6 @@
 <?php 
+  $_SESSION["usuarioid"] = $_POST['codigo'];
+
   include_once('include/connection.php');
 
   $servidor = 'localhost';
@@ -8,40 +10,42 @@
   conectar($servidor, $user, $pass, $name);
 
       function dameparticipantes(){
+      	$iduser = $_SESSION["usuarioid"] = $_POST['codigo'];
+
           $consulta_mysql="
           SELECT 
           *
-          from tb_persona where intidpersona = '1';
+          from tb_persona where intidpersona = '$iduser';
           ";
           $resultado_consulta_mysql=mysql_query($consulta_mysql);
           while($registro = mysql_fetch_array($resultado_consulta_mysql)){
               echo "
-          <div class='col-sm-12 col-md-12' style='margin-bottom:50px'>
-            <div class='team-member wow flipInY' data-wow-duration='1000ms' data-wow-delay='300ms'>
-              <!--div class='member-image'>
-                <img class='img-responsive' src='images/team/1.jpg' alt=''>
-              </div-->
-              <div class='member-info'>
-                <h3 style='text-transform:uppercase'>".$registro['nvchnombres']."</h3>
-                <h4 style='text-transform:uppercase; color:white'>".$registro['nvchapellido']."</h4>
-                <p style='color:white''>CEO, cargo skills</p>
-              </div>
-              <div class='social-icons'>
-                <ul>
-                  <li><a class='facebook' href='#'><i class='fa fa-facebook'></i></a></li>
-                  <li><a class='twitter' href='#'><i class='fa fa-twitter'></i></a></li>
-                  <!--li><a class='googleplus' href='#'><i class='fa fa-googleplus'></i></a></li-->
-                  <!--li><a class='dribbble' href='#''><i class='fa fa-dribbble'></i></a></li>
-                  <li><a class='rss' href='#'><i class='fa fa-rss'></i></a></li-->
-                </ul>
-              </div>
-            </div>
-          </div>
-              ";
+		          <div class='col-sm-4'>
+		            <div class='team-member wow flipInY' data-wow-duration='1000ms' data-wow-delay='300ms'>
+		              <div class='member-image'>
+		                <img style='width:200px; margin: 0 auto' class='img-responsive' src='images/team/1.jpg' alt=''>
+		              </div>
+		              <div class='member-info'>
+		                <h3 style='text-transform:uppercase'>".$registro['nvchnombres']."</h3>
+		                <h4 style='text-transform:uppercase; '>".$registro['nvchapellido']."</h4>
+		                <p style=''>CEO, cargo skills</p>
+		              </div>
+		              <div class='social-icons'>
+		                <ul>
+		                  <li><a class='facebook' href='#'><i class='fa fa-facebook'></i></a></li>
+		                  <li><a class='twitter' href='#'><i class='fa fa-twitter'></i></a></li>
+		                  <!--li><a class='googleplus' href='#'><i class='fa fa-googleplus'></i></a></li-->
+		                  <!--li><a class='dribbble' href='#''><i class='fa fa-dribbble'></i></a></li>
+		                  <li><a class='rss' href='#'><i class='fa fa-rss'></i></a></li-->
+		                </ul>
+		              </div>
+		            </div>
+		          </div>
+		              ";
         }
     }
-?>
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -101,61 +105,53 @@
       </div>
     </div><!--/#main-nav-->
   </header><!--/#home-->
-  
-<br>
-<br>
-<br>
 
-
-
-    <section id="about-us" class="parallax">
+  <section  id="mesklls" >
+  <br><br><br><br>
     <div class="container">
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="about-info wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
-            <div class="row">
-	          <?php dameparticipantes(); ?>
-	        </div>
-          </div>
+      <div class="team-members">
+        <div class="row">
+          <?php dameparticipantes(); ?>
+	      <div class="col-sm-6">
+	          <div class="our-skills wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+	            <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+	              <p class="lead">User Experiances</p>
+	              <div class="progress">
+	                <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar"  aria-valuetransitiongoal="95">95%</div>
+	              </div>
+	            </div>
+	            <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="400ms">
+	              <p class="lead">Web Design</p>
+	              <div class="progress">
+	                <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar"  aria-valuetransitiongoal="75">75%</div>
+	              </div>
+	            </div>
+	            <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
+	              <p class="lead">Programming</p>
+	              <div class="progress">
+	                <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar"  aria-valuetransitiongoal="60">60%</div>
+	              </div>
+	            </div>
+	            <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+	              <p class="lead">Fun</p>
+	              <div class="progress">
+	                <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar"  aria-valuetransitiongoal="85">85%</div>
+	              </div>
+	            </div>
+	          </div>
+	      </div>
         </div>
-        <div class="col-sm-9">
-          <div class="our-skills wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
-            <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
-              <p class="lead">User Experiances</p>
-              <div class="progress">
-                <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar"  aria-valuetransitiongoal="95">95%</div>
-              </div>
-            </div>
-            <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="400ms">
-              <p class="lead">Web Design</p>
-              <div class="progress">
-                <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar"  aria-valuetransitiongoal="75">75%</div>
-              </div>
-            </div>
-            <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
-              <p class="lead">Programming</p>
-              <div class="progress">
-                <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar"  aria-valuetransitiongoal="60">60%</div>
-              </div>
-            </div>
-            <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-              <p class="lead">Fun</p>
-              <div class="progress">
-                <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar"  aria-valuetransitiongoal="85">85%</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      </div>            
     </div>
-  </section><!--/#about-us-->
+  </section><!--/#team-->
+
 
   <section id="blog">
     <div class="container">
       <div class="row">
         <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1200ms" data-wow-delay="300ms">
-          <h2>Algunos de mis proyectos</h2>
-          <p>Estos son algunos de los ultimos trabajos en los que estuve colaborando.</p>
+          <h2>Proyectos Recientes</h2>
+          <p>Enigma TM, trabaja constantemente en el desarrollo de diversos proyectos, de manera colectiva e individualmente dentro del grupo, date una vuelta por esta seccion y mira lo mas reciente que hemos desarrollado.</p>
         </div>
       </div>
       <div class="blog-posts">
@@ -246,6 +242,7 @@
       </div>
     </div>
   </section><!--/#blog-->
+
 
 
   <section id="contact">

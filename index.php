@@ -1,23 +1,44 @@
 <?php 
-	include_once('include/connection.php');
+  include_once('include/connection.php');
 
-	$servidor = 'localhost';
-	$user = 'root';
-	$pass = '';
-	$name = 'db_portfoliogame';
-	conectar($servidor, $user, $pass, $name);
+  $servidor = 'localhost';
+  $user = 'root';
+  $pass = '';
+  $name = 'db_portfoliogame';
+  conectar($servidor, $user, $pass, $name);
 
-	    function dameparticipantes(){
-	        $consulta_mysql="
-	        SELECT 
-	        *
-	        from tb_persona
-	        ";
-	        $resultado_consulta_mysql=mysql_query($consulta_mysql);
-	        while($registro = mysql_fetch_array($resultado_consulta_mysql)){
-	            echo "
-	               <li>".$registro['nvchnombres']." ".$registro['nvchapellido']."</li>
-	            ";
+      function dameparticipantes(){
+          $consulta_mysql="
+          SELECT 
+          *
+          from tb_persona
+          ";
+          $resultado_consulta_mysql=mysql_query($consulta_mysql);
+          while($registro = mysql_fetch_array($resultado_consulta_mysql)){
+              echo "
+          <div class='col-sm-3 col-md-4' style='margin-bottom:50px'>
+            <div class='team-member wow flipInY' data-wow-duration='1000ms' data-wow-delay='300ms'>
+              <!--div class='member-image'>
+                <img class='img-responsive' src='images/team/1.jpg' alt=''>
+              </div-->
+              <div class='member-info'>
+                <h3 style='text-transform:uppercase'>".$registro['nvchnombres']."</h3>
+                <h4 style='text-transform:uppercase'>".$registro['nvchapellido']."</h4>
+                <p>CEO, cargo skills</p>
+                <p><a href='perfil.php' style='text-transform:uppercase'>Saber màs</a></p>
+              </div>
+              <div class='social-icons'>
+                <ul>
+                  <li><a class='facebook' href='#'><i class='fa fa-facebook'></i></a></li>
+                  <li><a class='twitter' href='#'><i class='fa fa-twitter'></i></a></li>
+                  <!--li><a class='googleplus' href='#'><i class='fa fa-googleplus'></i></a></li-->
+                  <!--li><a class='dribbble' href='#''><i class='fa fa-dribbble'></i></a></li>
+                  <li><a class='rss' href='#'><i class='fa fa-rss'></i></a></li-->
+                </ul>
+              </div>
+            </div>
+          </div>
+              ";
         }
     }
 ?>
